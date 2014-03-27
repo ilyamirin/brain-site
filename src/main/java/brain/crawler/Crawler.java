@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import java.util.List;
@@ -51,7 +52,7 @@ public class Crawler {
         QuestionDao questionDao = new QuestionDao();
         questionDao.init();
 
-        WebDriver driver = new HtmlUnitDriver(true);
+        WebDriver driver = new FirefoxDriver();//new HtmlUnitDriver(true);
 
         String baseUrl = "http://db.chgk.info/tour";
 
@@ -81,8 +82,11 @@ public class Crawler {
                 for (WebElement question : driver.findElements(By.cssSelector(".question"))) {
                     log.info(question.getText());
                     log.info(parse(question.getText()).toString());
-                    questionDao.save(parse(question.getText()));
+                    questionDao.insert(parse(question.getText()));
                 }
+
+                //System.gc();
+
                 sleep(1);
             }
 
