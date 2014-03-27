@@ -29,7 +29,11 @@ public class Server {
             public Object handle(Request request, Response response) {
                 String questionId = request.params(":questionId");
                 Question question = questionDao.get(new ObjectId(questionId));
-                String responseTemplate = "<html><body style='padding: 20px'><font size=\"80\"><h4>Ответ: </h4><p>%s</p><h4>Комментарий: </h4><p>%s</p><a href='/'>ИЩЩО</a></font></body></html>";
+                String responseTemplate = "<html><body style='padding: 20px'><font size=\"80\"><h4>Ответ: </h4><p>%s</p>";
+                if (question.getComment() != null) {
+                    responseTemplate += "<h4>Комментарий: </h4><p>%s</p>";
+                }
+                responseTemplate +=  "<a href='/'>ИЩЩО</a></font></body></html>";
                 return String.format(responseTemplate, question.getAnswer(), question.getComment());
             }
         });
