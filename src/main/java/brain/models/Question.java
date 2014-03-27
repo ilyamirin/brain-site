@@ -13,6 +13,7 @@ public class Question {
     private String answer;
     private String author;
     private String comment;
+    private String source;
     private Date addedAt;
     private boolean isModerated;
 }
