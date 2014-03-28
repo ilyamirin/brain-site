@@ -1,0 +1,16 @@
+<html>
+    <header>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </header>
+    <body style='padding: 20px'>
+        <font size="80">
+            <h4>Answer: </h4>
+            <p>$question.getAnswer()</p>
+            #if($question.getComment())
+                <h4>Comment: </h4>
+                <p>$question.getComment()</p>
+            #end
+            <a href='/'>Next question!</a>
+        </font>
+    </body>
+</html>

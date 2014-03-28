@@ -1,0 +1,13 @@
+<html>
+    <header>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </header>
+    <body style='padding: 20px'>
+        <script>setTimeout(function() { document.location = '/answer/$question.getId()'}, 75000);</script>
+        <font size="80">
+            <h4>And what is the question? </h4>
+            <p>$question.getText()</p>
+            <a href='/answer/$question.getId()'>Answer</a>
+        </font>
+    </body>
+</html>
